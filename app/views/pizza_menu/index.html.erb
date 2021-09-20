@@ -1,0 +1,247 @@
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+
+      <a class="navbar-brand hidden-xs" href="#myPage">
+        <%= image_tag("pizza_logo.png")%>
+      </a>
+      <a class="navbar-brand" href="#myPage">Jordan's Pizza</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <%= link_to 'CART', pizzas_order_index_path %>
+        </li>
+        <li><a href="#menu">MENU</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <%= image_tag("pizza1.jpg", alt: "Pizza1", width: "1200", height: "700")%>
+        <div class="carousel-caption">
+          <h3>Authentic Italian Pizza</h3>
+          <p>Our Pizza chef is a certified pizzaiolo of the Associazione Pizzaiuoli Napoletani (Association of Neapolitan Pizzamakers)</p>
+        </div>      
+      </div>
+
+      <div class="item">
+        <%= image_tag("dough.jpg", alt: "Dough", width: "1200", height: "700")%>
+        <div class="carousel-caption">
+          <h3>Freshly prepared every day</h3>
+          <p>We let all dough rise for 24-48 hours, resulting in a very light and digestible pizza. (No bloating after!)</p>
+          <p>We use 00 Caputo flour from Italy and 100% Italian extra virgin olive oil exclusively.</p>
+        </div>      
+      </div>
+    
+      <div class="item">
+        <%= image_tag("pizza2.jpg", alt: "Dough", width: "1200", height: "700")%>
+        <div class="carousel-caption">
+          <h3>Highest quality ingredients</h3>
+          <p>We offer buffalo mozzarella (Mozzarella di Bufala Campana D.O.P.) imported from the region around Naples and San Marzano D.O.P. tomatoes</p>
+        </div>      
+      </div>
+      
+      <div class="item">
+        <%= image_tag("oven.jpg", alt: "Oven", width: "1200", height: "700")%>
+        <div class="carousel-caption">
+          <h3>Wood fire oven</h3>
+          <p>We cook all pizzas in an 850 degree Mario Acunto oven imported from Naples.</p> 
+          <p>We cook the pizza after you order so your product is never reheated. (It reheats well at home, though.)</p>
+        </div>      
+      </div>
+    </div>
+
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</header>
+
+<section id="menu" class="bg-1">
+  <div class="container">
+    <h3 class="text-center slideanimate">PIZZA MENU</h3>
+    <p class="text-center slideanimate">We'll make you some real Italian pizza.<br> Choose your Pizza below and order for collection!</p>
+    
+    <div class="row display-flex text-center">
+      <article class="col-xs-12 col-sm-6 col-md-6 col-lg-4 hvr-grow slideanim">
+        <div class="thumbnail">
+          <%= image_tag("Margherita.jpg", alt: "Margherita") %>
+          <p><strong>Margherita - 29$</strong></p>
+          <p data-toggle="tooltip" title="Imported tomato sauce, Homemade mozzarella, Basil, Pecorino romano">Toppings Info <i class="fa fa-info-circle"></i></p>
+          <button class="btn order-pizza" data-toggle="modal" id="order-pizza" pizza-type="margherita" data-target="#myModal">Order</button>
+        </div>
+      </article>
+      <article class="col-xs-12 col-sm-6 col-md-6 col-lg-4 hvr-grow slideanim">
+        <div class="thumbnail">
+          <%= image_tag("Bianca.jpg", alt: "Bianca") %>
+          <p><strong>Bianca - 25$</strong></p>
+          <p data-toggle="tooltip" title="Homemade mozzarella, ricotta, Pecorino romano">Toppings Info <i class="fa fa-info-circle"></i></p>
+          <button class="btn order-pizza" data-toggle="modal" id="order-pizza" pizza-type="bianca" data-target="#myModal">Order</button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+  <section class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4><span class="glyphicon glyphicon-shopping-cart"></span>Order</h4>
+        </div>
+        <div class="modal-body">
+          <form role="form">
+            <div class="form-group"><label for="qty">QUANTITY</label>
+              <input type="number" class="form-control" id="qty" placeholder="How many?">
+            </div>
+              <button type="submit" id="add-pizza-item" class="btn btn-block" data-dismiss="modal">ADD 
+                <span class="glyphicon glyphicon-ok"></span>
+              </button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+            <span class="glyphicon glyphicon-remove"></span> Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="container">
+  <h3 class="text-center slideanim">Contact</h3>
+  <div class="row">
+    <article class="col-md-12">
+      <p class="slideanim">Call and place an order for collection</p>
+      <p class="slideanim"><span class="glyphicon glyphicon-map-marker"></span>Pajerssma 8, Soveir, Italia</p>
+      <p class="slideanim"><span class="glyphicon glyphicon-phone"></span>Phone: +33 66 39 88</p>
+      <p class="slideanim"><span class="glyphicon glyphicon-envelope"></span>Email: info@PizzaBusiness.it</p>
+    </article>
+  </div>
+</section>
+
+<section id="about" class="container text-center">
+  <article>
+    <h3 class="slideanim">About</h3>
+    <p class="slideanim"><em>We love Pizza! Our Pizza Chef is a certified pizzaiolo of the Associazione Pizzaiuoli Napoletani</em></p>
+    <p class="slideanim">Jordanio's Authentic Pizza Napoletana has been in business since 1967. Owner and pizzaiolo Jordanio is a a certified pizzaiolo of the Associazione Pizzaiuoli Napoletani (Association of Neapolitan Pizza-makers), and all of our pizzas are made according to Neapolitan tradition. We use only the highest-quality ingredients, including buffalo-milk mozzarella (Mozzarella di Bufala Campana D.O.P.) and San Marzano D.O.P. tomatoes imported from Naples as well as our fresh, home-made mozzarella. All pizzas are drizzled with 100% Italian extra-virgin olive oil and then baked to perfection at 850 degrees in a Mario Acunto wood-fired brick oven from Naples. The finished product is a pizza whose taste will bring you back to Italy. We recommend our three specialties - the Margherita D.O.P., Mom's, and La Saporita. 
+  </p>
+    <br>
+    <br>
+  </article>
+  <div class="row display-flex">
+    <article class="col-xs-12 col-sm-6 col-md-4 col-lg-3 slideanim">
+      <p class="text-center"><strong>Association of Neapolitan Pizzamakers</strong></p><br>
+      <a href="#demo" data-toggle="collapse">
+        <%= image_tag("APN.jpg", class: "img-circle collapse-info", width: "255", height: "255") %>
+      </a>
+      <div id="demo" class="collapse">
+        <p>Our Pizza Chef is a certified pizzaiolo of the Associazione Pizzaiuoli Napoletani (Association of Neapolitan Pizzamakers) and trained with Roberto Caporuscio of Don Antonio by Starita.</p>
+      </div>
+    </article>
+    <article class="col-xs-12 col-sm-6 col-md-4 col-lg-3 slideanim">
+      <p class="text-center"><strong>Buffalo-Milk Mozzarella</strong></p><br><br>
+      <a href="#demo2" data-toggle="collapse">
+        <%= image_tag("bufala.jpg", class: "img-circle collapse-info", width: "255", height: "255") %>
+      </a>
+      <div id="demo2" class="collapse">
+        <p>We offer buffalo mozzarella (Mozzarellaч di Bufala Campana D.O.P.) imported from the region around Naples as well as our own fresh mozzarella that we make daily in the kitchen of our store</p>
+      </div>
+    </article>
+    <article class="col-xs-12 col-sm-6 col-md-4 col-lg-3 slideanim">
+      <p class="text-center"><strong>Protected Designation of Origin (D.O.P.)</strong></p><br>
+      <a href="#demo3" data-toggle="collapse">
+        <%= image_tag("DOPseal.jpg", class: "img-circle collapse-info", width: "255", height: "255") %>
+      </a>
+      <div id="demo3" class="collapse">
+        <p>The “D.O.P.” label protects various Italian foods and certifies that the product is of the highest quality and has undergone numerous inspections.</p>
+      </div>
+    </article>
+    <article class="col-xs-12 col-sm-6 col-md-4 col-lg-3 slideanim">
+      <p class="text-center"><strong>San Marzano D.O.P. Tomatoes</strong></p><br><br>
+      <a href="#demo4" data-toggle="collapse">
+        <%= image_tag("SanMarzanoLogo.jpg", class: "img-circle collapse-info", width: "255", height: "255") %>
+      </a>
+      <div id="demo4" class="collapse">
+        <p>We use San Marzano D.O.P. tomatoes as well as other imported Italian tomatoes.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<script>
+  var pizzaSelectionItem = '';
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+
+    $(".order-pizza").click(function(item) {
+      pizzaSelectionItem = $(item.currentTarget).attr('pizza-type')
+    });
+
+    $("#add-pizza-item").click(function(item) {
+      var orderQuanitiy = item.target.parentElement.elements[0].value;
+      var storageData = getStorage();
+      var data = `{"${pizzaSelectionItem}": "${orderQuanitiy}"}`;
+      debugger;
+      if (storagePresence()) {
+        setValueToStorage(storageData, JSON.parse(data));
+      }
+    });
+
+    $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+      if (this.hash !== "") {
+        event.preventDefault();
+
+        var hash = this.hash;
+      
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top
+        }, 600, function(){
+          window.location.hash = hash;
+        });
+      }
+    });
+    
+    $(".slideanimate").each(function(){
+        $(this).stop().delay(1000).addClass("slide");
+    });
+
+    $(window).scroll(function() {
+      $(".slideanim").each(function(){
+        var pos = $(this).offset().top;
+        
+        var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+      });
+    });
+  })
+
+</script>
+
+</body>

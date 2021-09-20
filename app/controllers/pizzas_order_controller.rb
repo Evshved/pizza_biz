@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PizzasOrderController < ApplicationController
   def index
     # @order_items = PizzaType.where(id: ids)
@@ -8,7 +10,7 @@ class PizzasOrderController < ApplicationController
   def create
     order_item_ids = []
     order_price = 0
-    params.each do |elem|
+    params.each do |_elem|
       order_item = OrderItem.create(pizza_type: type, quantity: quantity)
       if order_item
         order_item_ids << order_item.id
@@ -16,10 +18,8 @@ class PizzasOrderController < ApplicationController
       end
     end
     price = Discounts::PriceCalculator.new(price)
-    
+
     order = Order.new(ids: order_item_ids, price: price)
-    if order.save
-      respond_to
-    end
+    respond_to if order.save
   end
 end

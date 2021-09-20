@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PizzaMenuController < ApplicationController
   def index
     @pizza_types = PizzaType.all

@@ -1,0 +1,14 @@
+<div class="order-items-list">
+  <% pizza_orders.each do |pizza_item| %>
+    <div class="order-item">
+      <%= image_tag("#{pizza_item[:name]}.jpg", width: 200, height: 200) %>
+      <p><strong>
+        <%= "#{pizza_item[:name]} - #{pizza_item[:price]}$" %>
+      </strong></p>
+      Quantity: <%= pizza_item[:quantity] %>
+    </div>
+  <% end %>
+  ================
+  <p><strong>Check: <%= "20$" %></strong></p>
+  <button class="order-button"> Order </button
+</div>

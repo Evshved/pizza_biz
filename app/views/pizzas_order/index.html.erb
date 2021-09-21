@@ -24,51 +24,24 @@
   </div>
 </nav>
 
+<div class="order-list">
+</div>
+
 <script>
   $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
-
-    $(".order-pizza").click(function(item) {
-      pizzaSelectionItem = $(item.currentTarget).attr('pizza-type')
-    });
-
-    $("#add-pizza-item").click(function(item) {
-      var orderQuanitiy = item.target.parentElement.elements[0].value;
-      var storageData = getStorage();
-      var data = `{"${pizzaSelectionItem}": "${orderQuanitiy}"}`;
-      debugger;
-      if (storagePresence()) {
-        setValueToStorage(storageData, JSON.parse(data));
+    data = getStorage();
+    $.ajax({
+      url: "/pizzas_order/order_items",
+      type: 'POST',
+      dataType: 'json',
+      data: data,
+      success:function(data){
+        $(".order-list").html(data.html);
+      },
+      error:function(data){
+          debugger;
+          
       }
-    });
-
-    $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
-      if (this.hash !== "") {
-        event.preventDefault();
-
-        var hash = this.hash;
-      
-        $('html, body').animate({
-          scrollTop: $(hash).offset().top
-        }, 600, function(){
-          window.location.hash = hash;
-        });
-      }
-    });
-    
-    $(".slideanimate").each(function(){
-        $(this).stop().delay(1000).addClass("slide");
-    });
-
-    $(window).scroll(function() {
-      $(".slideanim").each(function(){
-        var pos = $(this).offset().top;
-        
-        var winTop = $(window).scrollTop();
-        if (pos < winTop + 600) {
-          $(this).addClass("slide");
-        }
-      });
     });
   })
 

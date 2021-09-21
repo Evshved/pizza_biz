@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20_210_918_144_041) do
   end
 
   create_table 'orders', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb3', force: :cascade do |t|
-    t.integer 'order_items'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
   end

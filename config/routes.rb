@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
   resources :pizza_menu, only: [:index]
   namespace :api do
-    resources :pizza_orders, only: %i[index create]
+    resources :pizza_orders, only: %i[index show]
   end
   root 'pizza_menu#index'
 end

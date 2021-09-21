@@ -7,9 +7,9 @@
         <span class="icon-bar"></span>                        
       </button>
 
-      <a class="navbar-brand hidden-xs" href="#myPage">
+      <%= link_to root_path do %>
         <%= image_tag("pizza_logo.png")%>
-      </a>
+      <% end %>
       <a class="navbar-brand" href="#myPage">Jordan's Pizza</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
@@ -17,8 +17,9 @@
         <li>
           <%= link_to 'CART', pizzas_order_index_path %>
         </li>
-        <li><a href="#menu">MENU</a></li>
-        <li><a href="#contact">CONTACT</a></li>
+        <li>
+          <%= link_to 'MENU', root_path %>
+        </li>
       </ul>
     </div>
   </div>
@@ -39,8 +40,7 @@
         $(".order-list").html(data.html);
       },
       error:function(data){
-          debugger;
-          
+        debugger;
       }
     });
   })
